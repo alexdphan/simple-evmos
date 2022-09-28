@@ -1,14 +1,23 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.0;
 
-contract Counter {
-    uint256 public number;
+import "@forge-std/src/console.sol";
 
-    function setNumber(uint256 newNumber) public {
-        number = newNumber;
+contract Greeter {
+    string private greeting;
+
+    constructor(string memory _greeting) {
+        console.log("Deploying a Greeter with greeting:", _greeting);
+        greeting = _greeting;
     }
 
-    function increment() public {
-        number++;
+    function greet() public view returns (string memory) {
+        return greeting;
+    }
+
+    function setGreeting(string memory _greeting) public {
+        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
+        greeting = _greeting;
     }
 }
+
